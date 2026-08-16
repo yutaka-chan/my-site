@@ -1,25 +1,138 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Site</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOUNDLUX | Music Streaming</title>
+    <meta
+      name="description"
+      content="Dark-mode music streaming landing page with black, white, and pink accents."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="page-glow"></div>
 
-    <header>
-        <h1>My Site</h1>
+    <header class="topbar">
+      <div class="brand" aria-label="YUTAKA's WORKs home">
+        <span class="brand-mark">Y</span>
+        <span>YUTAKA's WORKs</span>
+      </div>
+
+      <nav class="main-nav" aria-label="メインナビゲーション">
+        <a href="#notice">NOTICE</a>
+        <a href="#discover">新作MV</a>
+        <a href="#works">作品一覧</a>
+      </nav>
+
     </header>
 
-    <main>
-        <p>Hello, world!</p>
+    <main class="page-shell">
+      <section class="notice-section" id="notice" aria-labelledby="notice-title">
+        <p class="eyebrow">NOTICE</p>
+        <h2 id="notice-title">注意事項</h2>
+        <p>
+          当サイトに掲載している作品は、楽曲・映像等の権利者による公式作品ではありません。<br>
+          各楽曲・映像の著作権その他の権利は、それぞれの権利者に帰属します。
+        </p>
+        <p>
+          当サイトでは、公開されている楽曲・映像をもとに、Web上での表現・演出を楽しむことを目的として、個人が制作したファンメイド作品を公開しています。
+        </p>
+        <p>
+          楽曲・映像そのものを当サイト上に再配布するものではなく、動画については各権利者が公開しているYouTube上のコンテンツを利用しています。
+        </p>
+        <p>
+          掲載内容について権利者からお問い合わせ・削除等のご要望があった場合は、適切に対応します。
+        </p>
+      </section>
+
+      <section class="hero" id="discover">
+        <div class="hero-copy">
+          <p class="eyebrow">新作MV</p>
+          <h1 class="song-title">点.mp4</h1>
+          <p class="song-credit">作詞：安見すや</p>
+          <p class="song-credit">作曲：安見すや</p>
+          <p class="song-credit">編曲：安見すや</p>
+          <p class="song-credit">歌唱：flower</p>
+          <p class="song-lyrics">
+            何言ってんの　二転三転してんぞ<br>
+            数えて見せろ　You've gotten rotten dots<br>
+            七転八倒　発展ない低層<br>
+            急転　直下　混じってんだって<br>
+            89点
+          </p>
+
+          <div class="cta-row">
+            <a href="works/mv01/index.html" class="button button-primary">今すぐ視聴</a>
+            <a href="#works" class="button button-secondary">他の作品を見る</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="注目のミュージックカード">
+          <div class="player-card">
+            <div class="album-art">
+              <div class="album-shine"></div>
+            </div>
+
+            <div class="track-meta">
+              <div>
+                <h2>点.mp4</h2>
+              </div>
+            </div>
+
+            <div class="waveform" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="player-controls">
+              <button aria-label="前の曲">⏮</button>
+              <a href="works/mv01/index.html" class="play-button" aria-label="再生">▶</a>
+              <button aria-label="次の曲">⏭</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="works-section" id="works" aria-labelledby="works-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">作品一覧</p>
+            <h3 id="works-title">作品一覧</h3>
+          </div>
+        </div>
+
+        <div class="works-list">
+          <a href="works/mv01/index.html" class="work-item">
+            <span class="work-index">01</span>
+            <span class="work-name">MV 01</span>
+            <span class="work-arrow">→</span>
+          </a>
+          <a href="works/mv02/index.html" class="work-item">
+            <span class="work-index">02</span>
+            <span class="work-name">MV 02</span>
+            <span class="work-arrow">→</span>
+          </a>
+          <a href="works/mv03/index.html" class="work-item">
+            <span class="work-index">03</span>
+            <span class="work-name">MV 03</span>
+            <span class="work-arrow">→</span>
+          </a>
+        </div>
+      </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 My Site</p>
+    <footer class="site-footer">
+      <p>YUTAKA's WORKs</p>
     </footer>
-
-    <script src="script.js"></script>
-</body>
+  </body>
 </html>
