@@ -7,10 +7,10 @@
   --line: rgba(255, 255, 255, 0.09);
   --text: #f5f5f5;
   --muted: #b7b7b7;
-  --pink: #ff4fa3;
-  --pink-dark: #d23786;
-  --pink-soft: #ff9ac7;
-  --shadow: rgba(255, 79, 163, 0.35);
+  --pink: #8ad9ff;
+  --pink-dark: #5fb6e6;
+  --pink-soft: #c7f1ff;
+  --shadow: rgba(138, 217, 255, 0.35);
 }
 
 * {
@@ -27,7 +27,7 @@ body {
   min-height: 100vh;
   font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic", sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(255, 79, 163, 0.16), transparent 28%),
+    radial-gradient(circle at top left, rgba(138, 217, 255, 0.16), transparent 28%),
     radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.04), transparent 22%),
     var(--bg);
   color: var(--text);
@@ -51,7 +51,7 @@ button {
 .page-glow {
   position: fixed;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 79, 163, 0.08), transparent 40%, rgba(255, 255, 255, 0.02));
+  background: linear-gradient(135deg, rgba(138, 217, 255, 0.08), transparent 40%, rgba(255, 255, 255, 0.02));
   pointer-events: none;
 }
 
@@ -88,7 +88,7 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--pink), #ffb1d8);
+  background: linear-gradient(135deg, var(--pink), #dff7ff);
   color: #12070f;
   font-weight: 900;
 }
@@ -256,8 +256,8 @@ button {
   border-radius: 26px;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 30%),
-    radial-gradient(circle at 30% 30%, rgba(255, 146, 198, 0.9), transparent 18%),
-    linear-gradient(160deg, #0e0e0e 0%, #1f1f1f 30%, #301018 55%, #111111 100%);
+    radial-gradient(circle at 30% 30%, rgba(138, 217, 255, 0.9), transparent 18%),
+    linear-gradient(160deg, #0e0e0e 0%, #121d24 30%, #1d2c35 55%, #111111 100%);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -285,8 +285,8 @@ button {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(135deg, #ffb9d9, #ff4fa3);
-  box-shadow: 0 0 26px rgba(255, 79, 163, 0.5);
+  background: linear-gradient(135deg, #dff7ff, #8ad9ff);
+  box-shadow: 0 0 26px rgba(138, 217, 255, 0.5);
 }
 
 .album-shine {
@@ -384,9 +384,9 @@ button {
   border-radius: 50%;
   font-size: 1.1rem;
   background: linear-gradient(135deg, var(--pink), var(--pink-soft));
-  color: #1b0d16;
+  color: #0d1b22;
   border-color: transparent;
-  box-shadow: 0 16px 28px rgba(255, 79, 163, 0.5);
+  box-shadow: 0 16px 28px rgba(138, 217, 255, 0.45);
   text-decoration: none;
 }
 
@@ -419,6 +419,10 @@ button {
 .notice-section {
   margin-bottom: 72px;
   scroll-margin-top: 92px;
+}
+
+.notice-actions {
+  display: none;
 }
 
 .hero {
@@ -595,6 +599,78 @@ button {
 }
 
 @media (max-width: 560px) {
+  .notice-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+    margin-bottom: 0;
+  }
+
+  .notice-toggle-label {
+    color: var(--pink-soft);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .notice-toggle {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--pink-soft);
+    width: 28px;
+    height: 28px;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 50%;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .notice-toggle-expand,
+  .notice-toggle-collapse {
+    display: none;
+  }
+
+  .notice-section:not(.is-open) .notice-toggle-expand {
+    display: inline-flex;
+  }
+
+  .notice-section.is-open .notice-toggle-collapse {
+    display: inline-flex;
+  }
+
+  .notice-toggle:hover {
+    opacity: 0.9;
+  }
+
+  .notice-toggle-icon {
+    display: inline-block;
+    font-size: 1.4rem;
+    line-height: 1;
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
+  }
+
+  .notice-body {
+    max-height: 8.2em;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .notice-section.is-open .notice-body {
+    max-height: 480px;
+  }
+
+  .notice-section p:not(.eyebrow) {
+    margin-bottom: 0.5em;
+  }
+
   .hero-copy h1 {
     font-size: 2.8rem;
   }

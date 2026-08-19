@@ -6,7 +6,7 @@
     <title>Music Webwork</title>
     <meta
       name="description"
-      content="Dark-mode music streaming landing page with black, white, and pink accents."
+      content="音楽や映像をWeb上で再解釈し、インタラクティブな表現として制作したWeb作品を公開しています。"
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -14,14 +14,14 @@
     <div class="page-glow"></div>
 
     <header class="topbar">
-      <div class="brand" aria-label="YUTAKA's WORKs home">
+      <div href="/" class="brand" aria-label="YUTAKA's WORKs home">
         <span class="brand-mark">Y</span>
         <span>YUTAKA's WORKs</span>
       </div>
 
       <nav class="main-nav" aria-label="メインナビゲーション">
         <a href="#notice">NOTICE</a>
-        <a href="#discover">新作MV</a>
+        <a href="#discover">最新作</a>
         <a href="#works">作品一覧</a>
       </nav>
 
@@ -30,25 +30,37 @@
     <main class="page-shell">
       <section class="notice-section" id="notice" aria-labelledby="notice-title">
         <p class="eyebrow">NOTICE</p>
-        <h2 id="notice-title">注意事項</h2>
-        <p>
-          当サイトに掲載している作品は、楽曲・映像等の権利者による公式作品ではありません。<br>
-          各楽曲・映像の著作権その他の権利は、それぞれの権利者に帰属します。
-        </p>
-        <p>
-          当サイトでは、公開されている楽曲・映像をもとに、Web上での表現・演出を楽しむことを目的として、個人が制作したファンメイド作品を公開しています。
-        </p>
-        <p>
-          楽曲・映像そのものを当サイト上に再配布するものではなく、動画については各権利者が公開しているYouTube上のコンテンツを利用しています。
-        </p>
-        <p>
-          掲載内容について権利者からお問い合わせ・削除等のご要望があった場合は、適切に対応します。
-        </p>
+
+        <div class="notice-body" id="notice-body">
+          <p>
+            当サイトに掲載している作品は、楽曲・映像等の権利者による公式作品ではありません。<br>
+            各楽曲・映像の著作権その他の権利は、それぞれの権利者に帰属します。
+          </p>
+          <p>
+            当サイトでは、公開されている楽曲・映像をもとに、Web上での表現・演出を楽しむことを目的として、個人が制作したファンメイド作品を公開しています。
+          </p>
+          <p>
+            楽曲・映像そのものを当サイト上に再配布するものではなく、動画については各権利者が公開しているYouTube上のコンテンツを利用しています。
+          </p>
+          <p>
+            掲載内容について権利者からお問い合わせ・削除等のご要望があった場合は、適切に対応します。
+          </p>
+        </div>
+
+        <div class="notice-actions" aria-label="NOTICEの開閉">
+          <span class="notice-toggle-label" aria-hidden="true">READ MORE</span>
+          <button class="notice-toggle notice-toggle-expand" type="button" aria-expanded="false" aria-controls="notice-body" aria-label="NOTICEを開く">
+            <span class="notice-toggle-icon">⌄</span>
+          </button>
+          <button class="notice-toggle notice-toggle-collapse" type="button" aria-expanded="true" aria-controls="notice-body" aria-label="NOTICEを閉じる">
+            <span class="notice-toggle-icon">⌃</span>
+          </button>
+        </div>
       </section>
 
       <section class="hero" id="discover">
         <div class="hero-copy">
-          <p class="eyebrow">新作MV</p>
+          <p class="eyebrow">最新作</p>
           <h1 class="song-title">点.mp4</h1>
           <p class="song-credit">作詞：安見すや</p>
           <p class="song-credit">作曲：安見すや</p>
@@ -134,5 +146,33 @@
     <footer class="site-footer">
       <p>YUTAKA's WORKs</p>
     </footer>
+
+    <script>
+      const noticeSection = document.querySelector('.notice-section');
+      const expandButton = document.querySelector('.notice-toggle-expand');
+      const collapseButton = document.querySelector('.notice-toggle-collapse');
+      const noticeToggleLabel = document.querySelector('.notice-toggle-label');
+
+      if (noticeSection && expandButton && collapseButton && noticeToggleLabel) {
+        const syncButtons = () => {
+          const isOpen = noticeSection.classList.contains('is-open');
+          expandButton.setAttribute('aria-expanded', String(isOpen));
+          collapseButton.setAttribute('aria-expanded', String(isOpen));
+          expandButton.setAttribute('aria-label', isOpen ? 'NOTICEを開く' : 'NOTICEを開く');
+          collapseButton.setAttribute('aria-label', isOpen ? 'NOTICEを閉じる' : 'NOTICEを閉じる');
+          noticeToggleLabel.textContent = isOpen ? 'CLOSE' : 'READ MORE';
+        };
+
+        const toggleNotice = () => {
+          noticeSection.classList.toggle('is-open');
+          syncButtons();
+        };
+
+        expandButton.addEventListener('click', toggleNotice);
+        collapseButton.addEventListener('click', toggleNotice);
+        noticeSection.classList.remove('is-open');
+        syncButtons();
+      }
+    </script>
   </body>
 </html>
