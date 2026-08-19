@@ -1,4 +1,5 @@
 :root {
+  /* テーマカラーはここで一元管理し、各コンポーネントから参照します。 */
   --bg: #050505;
   --bg-soft: #111111;
   --panel: rgba(22, 22, 22, 0.9);
@@ -49,6 +50,7 @@ button {
 }
 
 .page-glow {
+  /* 背景装飾をコンテンツやクリック操作から分離します。 */
   position: fixed;
   inset: 0;
   background: linear-gradient(135deg, rgba(138, 217, 255, 0.08), transparent 40%, rgba(255, 255, 255, 0.02));
@@ -56,6 +58,7 @@ button {
 }
 
 .topbar {
+  /* ヘッダーの高さを考慮して、各アンカーにscroll-margin-topを設定しています。 */
   position: sticky;
   top: 0;
   z-index: 10;
@@ -153,6 +156,7 @@ button {
 }
 
 .hero {
+  /* 左側に作品情報、右側にプレイヤー風カードを配置します。 */
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 42px;
@@ -242,6 +246,7 @@ button {
 }
 
 .player-card {
+  /* 実際の再生機能ではなく、MVへの導線を視覚化するカードです。 */
   width: min(100%, 430px);
   padding: 26px;
   border-radius: 28px;
@@ -417,6 +422,7 @@ button {
 }
 
 .notice-section {
+  /* stickyヘッダーに見出しが隠れないよう、アンカー位置を補正します。 */
   margin-bottom: 72px;
   scroll-margin-top: 92px;
 }
@@ -530,7 +536,7 @@ button {
 
 .work-item:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 79, 163, 0.6);
+  border-color: rgba(138, 217, 255, 0.6);
   background: rgba(28, 28, 28, 0.9);
 }
 
@@ -575,6 +581,7 @@ button {
 }
 
 @media (max-width: 860px) {
+  /* タブレット幅ではヘッダーとヒーローを縦方向に再配置します。 */
   .topbar {
     flex-wrap: wrap;
     justify-content: center;
@@ -599,6 +606,7 @@ button {
 }
 
 @media (max-width: 560px) {
+  /* NOTICEの本文と開閉ボタンはスマートフォンだけ折りたたみます。 */
   .notice-actions {
     display: flex;
     flex-direction: column;

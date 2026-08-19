@@ -11,8 +11,10 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <!-- 背景の光彩。操作対象ではないため、CSSでポインターイベントを無効化しています。 -->
     <div class="page-glow"></div>
 
+    <!-- スクロール時にも画面上部に残るサイトヘッダー -->
     <header class="topbar">
       <div href="/" class="brand" aria-label="YUTAKA's WORKs home">
         <span class="brand-mark">Y</span>
@@ -28,9 +30,9 @@
     </header>
 
     <main class="page-shell">
-      <section class="notice-section" id="notice" aria-labelledby="notice-title">
+      <!-- ファンメイド作品であることと権利表記をまとめたNOTICE -->
+      <section class="notice-section" id="notice">
         <p class="eyebrow">NOTICE</p>
-
         <div class="notice-body" id="notice-body">
           <p>
             当サイトに掲載している作品は、楽曲・映像等の権利者による公式作品ではありません。<br>
@@ -47,7 +49,8 @@
           </p>
         </div>
 
-        <div class="notice-actions" aria-label="NOTICEの開閉">
+        <!-- 開閉コントロールはモバイル表示時のみCSSで表示します。 -->
+        <div class="notice-actions">
           <span class="notice-toggle-label" aria-hidden="true">READ MORE</span>
           <button class="notice-toggle notice-toggle-expand" type="button" aria-expanded="false" aria-controls="notice-body" aria-label="NOTICEを開く">
             <span class="notice-toggle-icon">⌄</span>
@@ -58,6 +61,7 @@
         </div>
       </section>
 
+      <!-- 最新作の紹介とMV詳細ページへの導線 -->
       <section class="hero" id="discover">
         <div class="hero-copy">
           <p class="eyebrow">最新作</p>
@@ -80,7 +84,8 @@
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="注目のミュージックカード">
+        <!-- 実際の音源再生ではなく、MVページへ遷移するプレイヤー風のビジュアルです。 -->
+        <div class="hero-visual" aria-label="最新作のMusic Webworkを見る">
           <div class="player-card">
             <div class="album-art">
               <div class="album-shine"></div>
@@ -115,6 +120,7 @@
         </div>
       </section>
 
+      <!-- 公開中の作品へのリンク一覧 -->
       <section class="works-section" id="works" aria-labelledby="works-title">
         <div class="section-heading">
           <div>
@@ -126,17 +132,17 @@
         <div class="works-list">
           <a href="works/mv01/index.html" class="work-item">
             <span class="work-index">01</span>
-            <span class="work-name">MV 01</span>
+            <span class="work-name">点.mp4 / 安見すや</span>
             <span class="work-arrow">→</span>
           </a>
           <a href="works/mv02/index.html" class="work-item">
             <span class="work-index">02</span>
-            <span class="work-name">MV 02</span>
+            <span class="work-name">乙女解剖 / DECO*27</span>
             <span class="work-arrow">→</span>
           </a>
           <a href="works/mv03/index.html" class="work-item">
             <span class="work-index">03</span>
-            <span class="work-name">MV 03</span>
+            <span class="work-name">flos / R Sound Design</span>
             <span class="work-arrow">→</span>
           </a>
         </div>
@@ -148,21 +154,24 @@
     </footer>
 
     <script>
+      // NOTICEの開閉要素を取得し、ページ内に存在する場合だけ初期化します。
       const noticeSection = document.querySelector('.notice-section');
       const expandButton = document.querySelector('.notice-toggle-expand');
       const collapseButton = document.querySelector('.notice-toggle-collapse');
       const noticeToggleLabel = document.querySelector('.notice-toggle-label');
 
       if (noticeSection && expandButton && collapseButton && noticeToggleLabel) {
+        // 開閉状態とARIA属性、ボタン上のラベルを常に同期させます。
         const syncButtons = () => {
           const isOpen = noticeSection.classList.contains('is-open');
           expandButton.setAttribute('aria-expanded', String(isOpen));
           collapseButton.setAttribute('aria-expanded', String(isOpen));
-          expandButton.setAttribute('aria-label', isOpen ? 'NOTICEを開く' : 'NOTICEを開く');
-          collapseButton.setAttribute('aria-label', isOpen ? 'NOTICEを閉じる' : 'NOTICEを閉じる');
+          expandButton.setAttribute('aria-label', 'NOTICEを開く');
+          collapseButton.setAttribute('aria-label', 'NOTICEを閉じる');
           noticeToggleLabel.textContent = isOpen ? 'CLOSE' : 'READ MORE';
         };
 
+        // CSSが参照するis-openクラスだけを切り替えて表示状態を変更します。
         const toggleNotice = () => {
           noticeSection.classList.toggle('is-open');
           syncButtons();
@@ -170,6 +179,8 @@
 
         expandButton.addEventListener('click', toggleNotice);
         collapseButton.addEventListener('click', toggleNotice);
+        // 初回表示はモバイルで折りたたみ状態にします。
+        // モバイル判定はCSS側で実装。
         noticeSection.classList.remove('is-open');
         syncButtons();
       }
